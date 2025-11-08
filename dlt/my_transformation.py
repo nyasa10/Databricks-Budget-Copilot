@@ -4,7 +4,6 @@ from pyspark.sql import Row
 
 # Mock data (real system.billing.usage may be empty in Community)
 mock_data = []
-
 for i in range(50):
     mock_data.append(
         Row(
