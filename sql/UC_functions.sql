@@ -1,6 +1,6 @@
 CREATE CATALOG IF NOT EXISTS budget_copilot;
 
-USE CATALOG budget_copilot;
+USE CATALOG budget_copilot; 
 CREATE SCHEMA raw;
 CREATE SCHEMA gold;
 
