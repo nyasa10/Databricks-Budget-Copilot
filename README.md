@@ -9,7 +9,6 @@
 - **Action**: Scales clusters + sends Slack-style alerts  
 - **Output**: **$1,240 saved** across 50 users  
 - **Governance**: Full audit trail in Delta (`agent_traces`)
-
 ---
 
 ## Tech Stack
