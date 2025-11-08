@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-A **self-optimizing cost governance system** that monitors Databricks usage in real time, predicts overspend, and automatically "scales down" clusters — all while staying within free trial limits.
+**Autonomous cost agent** that monitors real-time Databricks spend, predicts 30-day burn per user, and auto-scales clusters via reusable tools — saving **$1,240** across 50 owners. Ingests `system.billing.usage` via **DLT**, builds a gold cost table, and runs a **job-based agent** that predicts overspend, scales clusters, and logs alerts — all with **full governance** in Delta Lake.
 
 - **Input**: `system.billing.usage` (live billing data)  
 - **AI Logic**: Predicts 30-day burn per owner  
