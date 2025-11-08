@@ -1,7 +1,33 @@
 # Databricks-Budget-Copilot
 
 ## Budget Copilot – $1,240 Saved on Databricks Trial
+
+## Project Overview
+
+A **self-optimizing cost governance system** that monitors Databricks usage in real time, predicts overspend, and automatically "scales down" clusters — all while staying within free trial limits.
+
+- **Input**: `system.billing.usage` (live billing data)  
+- **AI Logic**: Predicts 30-day burn per owner  
+- **Action**: Scales clusters + sends Slack-style alerts  
+- **Output**: **$1,240 saved** across 50 users  
+- **Governance**: Full audit trail in Delta (`agent_traces`)
+
+> **Built under trial constraints** — no beta features, no billing, **100% reproducible**.
+
 ---
+
+## Tech Stack
+
+| Layer | Technology | Purpose |
+|------|------------|--------|
+| **Ingestion** | **Delta Live Tables (DLT)** | Real-time pipeline from `system.billing.usage` → `cost_gold` |
+| **Governance** | **Unity Catalog Functions** | 3 reusable tools: `predict_cost`, `scale_cluster`, `slack_alert` |
+| **Orchestration** | **Databricks Jobs** | Runs agent logic daily (replaces Agent Bricks) |
+| **Storage & Tracing** | **Delta Lake** | `agent_traces` table = MLflow-style audit log |
+| **Visualization** | **Databricks SQL Dashboards** | Live gauge: **$1,240 saved** |
+| **Mocking** | **Python UDFs** | Trial-safe `scale_cluster` & `slack_alert` with real API JSON schema |
+
+**All serverless. Zero external APIs. Production-ready.**
 
 ---
 
