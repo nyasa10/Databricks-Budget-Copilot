@@ -7,6 +7,8 @@ CREATE SCHEMA gold;
 SHOW SCHEMAS IN budget_copilot;
 SELECT * FROM budget_copilot.raw.cost_gold LIMIT 5;
 
+-- 1. Predict 30-day cost
+
 CREATE OR REPLACE FUNCTION budget_copilot.raw.predict_cost(owner STRING)
 RETURNS DOUBLE
 LANGUAGE SQL
@@ -17,6 +19,7 @@ RETURN
 
 SELECT budget_copilot.raw.predict_cost('highspend0@example.com');
 
+-- 2. Scale cluster (mock)
 
 CREATE OR REPLACE FUNCTION budget_copilot.raw.scale_cluster(cluster_id STRING)
 RETURNS STRING
@@ -37,6 +40,9 @@ return json.dumps({
 $$;
 
 SELECT budget_copilot.raw.slack_alert('Trial test!');
+
+
+-- 4. Traces table
 
 CREATE TABLE IF NOT EXISTS budget_copilot.raw.agent_traces (
   total_saved DOUBLE,
