@@ -17,26 +17,6 @@ RETURN
 
 SELECT budget_copilot.raw.predict_cost('highspend0@example.com');
 
-CREATE OR REPLACE FUNCTION budget_copilot.raw.scale_cluster(cluster_id STRING)
-RETURNS STRING
-LANGUAGE PYTHON
-AS $$
-import json
-from datetime import datetime
-
-# Real-looking mock response
-return json.dumps({
-    "state": "RESIZED",
-    "cluster_id": cluster_id,
-    "num_workers_target": 2,
-    "savings_dbus": 4.2,
-    "savings_usd": 2.10,
-    "timestamp": datetime.utcnow().isoformat() + "Z",
-    "status_code": 200
-})
-$$;
-
-SELECT budget_copilot.raw.scale_cluster('mock-cluster-1');
 
 CREATE OR REPLACE FUNCTION budget_copilot.raw.scale_cluster(cluster_id STRING)
 RETURNS STRING
