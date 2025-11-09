@@ -39,6 +39,8 @@ return json.dumps({
 })
 $$;
 
+
+--3. Slack Alert
 SELECT budget_copilot.raw.slack_alert('Trial test!');
 
 
