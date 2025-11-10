@@ -1,4 +1,4 @@
-# Lakehouse Budget Copilot
+# Lakehouse Budget Copilot — Autonomous FinOps Agent for Databricks (GenAI + DLT + UC Functions)
 
 ## Project Overview
 
