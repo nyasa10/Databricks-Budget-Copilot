@@ -43,6 +43,26 @@ SELECT budget_copilot.raw.scale_cluster('mock-cluster-001');
 
 
 --3. Slack Alert
+
+CREATE OR REPLACE FUNCTION budget_copilot.raw.slack_alert(msg STRING)
+RETURNS STRING
+LANGUAGE PYTHON
+AS $$
+import json
+from datetime import datetime
+
+now = datetime.utcnow()
+ts = f"{int(now.timestamp())}.{'%06d' % (now.microsecond // 1000)}"
+
+return json.dumps({
+    "status": "sent",
+    "channel": "#budget",       
+    "message": msg,
+    "timestamp": now.isoformat() + "Z",
+    "ts": ts                     
+})
+$$;
+
 SELECT budget_copilot.raw.slack_alert('Trial test!');
 
 
