@@ -41,37 +41,13 @@ graph TD
 ```mermaid
 
 flowchart TD
-
-    %% ---------------------------
-    %% Ingestion Layer
-    %% ---------------------------
-    A[system.billing.usage <br> (or mock DLT input)] --> B[DLT Pipeline <br> cost_gold]
-
-    %% ---------------------------
-    %% Intelligence Layer (UC Tools)
-    %% ---------------------------
-    B --> C[[Unity Catalog Functions]]
-    C --> C1[predict_cost(owner)]
-    C --> C2[scale_cluster(cluster_id)]
-    C --> C3[slack_alert(message)]
-
-    %% ---------------------------
-    %% Agent Layer
-    %% ---------------------------
-    C --> D[FinOps Agent Job <br> (Python Automation)]
-
-    %% ---------------------------
-    %% Observability / Trace Layer
-    %% ---------------------------
-    D --> E[agent_traces Delta Table <br> (Full JSON logs)]
-
-    %% ---------------------------
-    %% Visualization Layer
-    %% ---------------------------
-    E --> F[SQL Dashboard <br> AI Savings & Spend]
-
-    %% ---------------------------
-    %% Slack (Mock Path in CE)
-    %% ---------------------------
-    D --> G[(Slack Mock Queue <br> ts timestamps)]
+    A["system.billing.usage (or mock DLT input)"] --> B["DLT Pipeline: cost_gold"]
+    B --> C["Unity Catalog Functions"]
+    C --> C1["predict_cost(owner)"]
+    C --> C2["scale_cluster(cluster_id)"]
+    C --> C3["slack_alert(message)"]
+    C --> D["FinOps Agent Job (Python Automation)"]
+    D --> E["agent_traces Delta Table (full JSON logs)"]
+    E --> F["SQL Dashboard (AI Savings & Spend)"]
+    D --> G["Slack Mock Queue (ts timestamps)"]
 
