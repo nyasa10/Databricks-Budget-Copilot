@@ -39,6 +39,8 @@ return json.dumps({
 })
 $$;
 
+SELECT budget_copilot.raw.scale_cluster('mock-cluster-001');
+
 
 --3. Slack Alert
 SELECT budget_copilot.raw.slack_alert('Trial test!');
