@@ -34,3 +34,44 @@ graph TD
     D --> E[Job = Agent]
     E --> F[agent_traces]
     F --> G[Dashboard: $1,240]
+```
+
+## Architecture
+
+```mermaid
+
+flowchart TD
+
+    %% ---------------------------
+    %% Ingestion Layer
+    %% ---------------------------
+    A[system.billing.usage <br> (or mock DLT input)] --> B[DLT Pipeline <br> cost_gold]
+
+    %% ---------------------------
+    %% Intelligence Layer (UC Tools)
+    %% ---------------------------
+    B --> C[[Unity Catalog Functions]]
+    C --> C1[predict_cost(owner)]
+    C --> C2[scale_cluster(cluster_id)]
+    C --> C3[slack_alert(message)]
+
+    %% ---------------------------
+    %% Agent Layer
+    %% ---------------------------
+    C --> D[FinOps Agent Job <br> (Python Automation)]
+
+    %% ---------------------------
+    %% Observability / Trace Layer
+    %% ---------------------------
+    D --> E[agent_traces Delta Table <br> (Full JSON logs)]
+
+    %% ---------------------------
+    %% Visualization Layer
+    %% ---------------------------
+    E --> F[SQL Dashboard <br> AI Savings & Spend]
+
+    %% ---------------------------
+    %% Slack (Mock Path in CE)
+    %% ---------------------------
+    D --> G[(Slack Mock Queue <br> ts timestamps)]
+
