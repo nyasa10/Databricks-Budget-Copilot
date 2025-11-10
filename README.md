@@ -1,4 +1,4 @@
-# Databricks-Budget-Copilot
+# Lakehouse Budget Copilot
 
 ## Project Overview
 
