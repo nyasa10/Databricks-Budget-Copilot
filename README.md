@@ -1,4 +1,4 @@
-# Lakehouse Budget Copilot — Autonomous Cost Agent for Databricks (GenAI + DLT + UC Functions)
+# Lakehouse Budget Copilot — Autonomous Cost Agent for Databricks 
 
 ## Project Overview
 
